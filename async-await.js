@@ -54,18 +54,20 @@ const getSalario = ( id ) => {
 
 const id = 3;
 
-const getInfoUsuario = async ( id ) => {
-    try{
+const getInfoEmpleado = async ( id ) => {
+
+    try {
         const empleado = await getEmpleado( id );
         const salario  = await getSalario( id );
-      
-        return `El salario del empleado: ${ empleado} es de: ${ salario }`;
+    
+        return `Empleado: ${ empleado }, salario: ${ salario }`;
+
     } catch( err ){
         throw err;
     }
 
 }
 
-getInfoUsuario( id )
-    .then( msg => console.log( msg))
-    .catch( err => console.log(err ));
+getInfoEmpleado( id )
+    .then( msg => console.log( msg ) )
+    .catch( err => console.log( err ) );

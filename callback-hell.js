@@ -1,4 +1,4 @@
-
+console.clear();
 const empleados = [
     {
         id: 1,
@@ -27,40 +27,39 @@ const salarios = [
 
 const id = 3;
 
-// Busca el empleado en la BD
 const getEmpleado = ( id, callback ) => {
 
-    const empleado = empleados.find( e => e.id === id)?.nombre;
+    const empleado = empleados.find( e => e.id === id )?.nombre;
+
     if( empleado ) {
         callback( null, empleado );
     } else {
-        callback(`El empleado con id: ${ id } no existe`);
+        callback(`Empleado con id ${ id } no existe`);
     }
+
 }
 
-// Busca el salario en la BD
 const getSalario = ( id, callback ) => {
-    
+
     const salario = salarios.find( s => s.id === id )?.salario;
+
     if( salario ) {
         callback( null, salario );
     } else {
-        callback(`El salario del empleado con id: ${ id } no existe`);
+        callback(`No existe salario para el usuario id ${ id }`);
     }
-};
+}
 
-getEmpleado( id, (err, empleado ) => {
-
+getEmpleado( id, ( err, empleado ) =>{
     if( err ) {
         return console.log( err );
     }
-
+   
     getSalario( id, ( err, salario ) => {
         if( err ) {
             return console.log( err );
         }
-        console.log('Empleado ', empleado, ' salario ', salario);
+        console.log(`Nombre: ${ empleado } Salario: ${ salario }`);
     });
 
 });
-
